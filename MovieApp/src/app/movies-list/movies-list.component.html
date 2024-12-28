@@ -1,0 +1,17 @@
+<div class="movies-list">
+  <h1>Lista de Películas</h1>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="movies.length > 0; else noMovies">
+    <ul>
+      <li *ngFor="let movie of movies">
+        <strong>{{ movie.title }}</strong> - {{ movie.director }} ({{ movie.year }})
+        <a [routerLink]="['/movies', movie.id]">Ver detalles</a>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noMovies>
+    <p>No hay películas disponibles.</p>
+  </ng-template>
+</div>

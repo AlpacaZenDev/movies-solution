@@ -1,0 +1,30 @@
+<h1>Crear Nueva Película</h1>
+<form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+  <label for="title">Título:</label>
+  <input id="title" formControlName="title" />
+  <div *ngIf="movieForm.get('title')?.invalid && movieForm.get('title')?.touched">
+    <small>Título es requerido y debe tener al menos 3 caracteres.</small>
+  </div>
+
+  <label for="director">Director:</label>
+  <input id="director" formControlName="director" />
+  <div *ngIf="movieForm.get('director')?.invalid && movieForm.get('director')?.touched">
+    <small>Director es requerido.</small>
+  </div>
+
+  <label for="genre">Género:</label>
+  <input id="genre" formControlName="genre" />
+  <div *ngIf="movieForm.get('genre')?.invalid && movieForm.get('genre')?.touched">
+    <small>Género es requerido.</small>
+  </div>
+
+  <label for="year">Año:</label>
+  <input id="year" type="number" formControlName="year" />
+  <div *ngIf="movieForm.get('year')?.invalid && movieForm.get('year')?.touched">
+    <small>
+      Año es requerido y debe estar entre 1900 y {{ currentYear }}.
+    </small>
+  </div>
+
+  <button type="submit" [disabled]="movieForm.invalid">Crear Película</button>
+</form>
